@@ -49,7 +49,11 @@ setup(
     package_data={
         "ai_clips_maker": [
             "templates/*.html",
-            "static/*",
+            "static/app.css",
+            "static/app.js",
+            "static/favicon.svg",
+            "static/Rubik-Variable.ttf",
+            "static/Rubik-OFL.txt",
             "assets/platform/*.png",
         ],
     },

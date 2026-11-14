@@ -168,15 +168,17 @@ for selected clips. Headline edits update the rendered video and refresh the
 ZIP; title selection renames the file and also refreshes the ZIP. You can
 inspect the finished clip before downloading it.
 
-The studio uses the locally bundled **Rubik 80s Fade** font for display
-headings; its SIL Open Font License is included alongside the font. To use a
-moving background, place a browser-compatible, optimized `wallpaper.webm` or
-`wallpaper.mp4` in `ai_clips_maker/static/`. The page automatically enables it
-and keeps a dark overlay for text contrast; people who prefer reduced motion
-see the static background instead. The supplied `.mlw` wallpaper package is
-not a standard browser video and cannot be decoded by FFmpeg. Export a web
-video from the wallpaper provider's official app or obtain a web-compatible
-source before adding it. Do not commit the original package as a substitute.
+The studio bundles the readable **Rubik** variable font for headings and UI
+text, with its SIL Open Font License alongside the font. The previous distressed
+Rubik 80s Fade face is not used for interface text. To use a moving background,
+place an authorized, browser-compatible `wallpaper.webm` or `wallpaper.mp4` in
+`ai_clips_maker/static/`. The page enables it automatically and keeps a dark
+overlay for text contrast; people who prefer reduced motion see the static
+background instead. Wallpaper video files are intentionally excluded from Git
+and package builds; add your own media locally. The supplied GTA-themed video
+is used only in the local workspace and is not included in this repository.
+The previously supplied `.mlw` package is not a standard browser video and
+cannot be decoded by FFmpeg.
 
 TikTok-style output keeps the full source frame centered over a blurred fill.
 The **Creator pop** preset uses bold all-caps captions with karaoke color

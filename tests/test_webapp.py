@@ -35,7 +35,8 @@ def client(tmp_path, monkeypatch):
     return app.test_client()
 
 
-def test_homepage_serves_clipp3r_workspace(client):
+def test_homepage_serves_clipp3r_workspace(client, monkeypatch):
+    monkeypatch.setattr(Path, "is_file", lambda _path: False)
     response = client.get("/")
 
     assert response.status_code == 200
@@ -52,6 +53,7 @@ def test_homepage_serves_clipp3r_workspace(client):
     assert b'id="select-top-25"' in response.data
     assert b'<details class="creator-brief">' in response.data
     assert b'class="ambient-wallpaper"' not in response.data
+    assert b'class="ambient-wallpaper-poster"' not in response.data
     assert b"Classic" in response.data
     assert b"Add or edit headlines" in response.data
     assert response.data.index(b'id="clip-grid"') < response.data.index(
@@ -59,25 +61,37 @@ def test_homepage_serves_clipp3r_workspace(client):
     )
 
 
-def test_homepage_serves_the_locally_bundled_display_font(client):
-    response = client.get("/static/Rubik80sFade-Regular.ttf")
+def test_homepage_serves_the_locally_bundled_readable_font(client):
+    response = client.get("/static/Rubik-Variable.ttf")
 
     assert response.status_code == 200
     assert response.mimetype == "font/ttf"
 
 
-def test_homepage_uses_optional_browser_ready_wallpaper(client, monkeypatch):
+@pytest.mark.parametrize("extension", ["webm", "mp4"])
+def test_homepage_uses_optional_browser_ready_wallpaper(client, monkeypatch, extension):
+    monkeypatch.setattr(Path, "is_file", lambda path: path.name == f"wallpaper.{extension}")
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert b'class="ambient-wallpaper"' in response.data
+    assert f"/static/wallpaper.{extension}".encode() in response.data
+
+
+def test_homepage_uses_a_static_wallpaper_for_reduced_motion(client, monkeypatch):
     monkeypatch.setattr(
         Path,
         "is_file",
-        lambda path: path.name == "wallpaper.webm",
+        lambda path: path.name in {"wallpaper.mp4", "wallpaper-poster.jpg"},
     )
 
     response = client.get("/")
 
     assert response.status_code == 200
     assert b'class="ambient-wallpaper"' in response.data
-    assert b"/static/wallpaper.webm" in response.data
+    assert b'class="ambient-wallpaper-poster"' in response.data
+    assert b"/static/wallpaper-poster.jpg" in response.data
 
 
 @pytest.mark.parametrize(

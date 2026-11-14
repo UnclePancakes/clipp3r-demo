@@ -15,6 +15,9 @@
     <source src="{{ url_for('static', filename=wallpaper_filename) }}">
   </video>
   {% endif %}
+  {% if wallpaper_poster %}
+  <img class="ambient-wallpaper-poster" src="{{ url_for('static', filename=wallpaper_poster) }}" alt="" aria-hidden="true">
+  {% endif %}
   <div class="noise" aria-hidden="true"></div>
   <div class="shell">
     <header class="topbar">

@@ -89,10 +89,16 @@ def create_app(
             ),
             None,
         )
+        wallpaper_poster = (
+            "wallpaper-poster.jpg"
+            if (Path(app.static_folder) / "wallpaper-poster.jpg").is_file()
+            else None
+        )
         return render_template(
             "index.html",
             language_options=LANGUAGE_OPTIONS,
             wallpaper_filename=wallpaper_filename,
+            wallpaper_poster=wallpaper_poster,
         )
 
     @app.post("/api/jobs")
