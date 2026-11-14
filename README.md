@@ -1,10 +1,10 @@
-# CLIPP3R Demo
-> A demo version of the CLIPP3R video clipping software.
+# 🎬 CLIPP3R Demo
+> A local-first creator studio built on Alperen Sümeroğlu's `ai-clips-maker` project.
 
-# 🎬 ai-clips-maker  
-> **Created by Alperen Sümeroğlu** — An AI-assisted video library for turning long-form content into short clips.
-
-`ai-clips-maker` is a modular Python library for **creators, educators, and developers**. It transcribes speech, suggests topical time ranges, adds readable captions, and exports portrait video with face-guided framing.
+CLIPP3R adapts the original `ai-clips-maker` library into a local-first workflow
+for finding, reviewing, captioning, and exporting short-form video clips.
+This project preserves credit to the original author and identifies the work
+contributed to the CLIPP3R adaptation below.
 
 ---
 
@@ -18,7 +18,7 @@
 - [🧪 Tests](#-tests)  
 - [🗺 Roadmap](#-roadmap)  
 - [🤝 Contribute](#-contribute)  
-- [👤 Author](#-author)  
+- [👥 Project credits](#-project-credits)
 - [🎧 Weekly Rewind Podcast](#-weekly-rewind-podcast)  
 - [📄 License](#-license)
 
@@ -283,19 +283,21 @@ Before contributing, please review open issues and coding style guide.
 
 ---
 
-## 👤 Author  
+## 👥 Project credits
 
-**Alperen Sümeroğlu**  
-Computer Engineer • Entrepreneur • World Explorer 🌍  
-15+ European countries explored ✈️
+### Original project: Alperen Sümeroğlu
 
-- 🔗 [LinkedIn](https://www.linkedin.com/in/alperensumeroglu/)  
-- 🧠 [LeetCode](https://leetcode.com/u/alperensumeroglu/)  
-- 🚀 [Daily.dev](https://app.daily.dev/alperensumeroglu)  
+The original `ai-clips-maker` library and its core media, transcription,
+speaker-aware cropping, and clip-generation foundations were created by
+[Alperen Sümeroğlu](https://github.com/alperensumeroglu/ai-clips-maker).
 
-> *“Let your code tell your story — clean, powerful, and useful.”*
+### CLIPP3R adaptation: Akho Makhomfana
 
----
+Akho Makhomfana adapted the project into the CLIPP3R creator workflow,
+including the local web studio, candidate timeline and review experience,
+clip selection and ranking improvements, platform branding, and creator-led
+metadata suggestions. This demo repository is maintained at
+[UnclePancakes/clipp3r-demo](https://github.com/UnclePancakes/clipp3r-demo).
 
 ## 🎧 Weekly Rewind Podcast  
 
@@ -328,4 +330,6 @@ A behind-the-scenes look at real-world experiences, global insights, and hands-o
 ## 📄 License  
 
 MIT License — Free for commercial and personal use.  
-© 2024 Alperen Sümeroğlu
+The original copyright and license terms are preserved in [LICENSE](./LICENSE).
+See [Project credits](#-project-credits) for attribution of the original
+project and the CLIPP3R adaptation.
