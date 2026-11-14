@@ -1,3 +1,6 @@
+# CLIPP3R Demo
+> A demo version of the CLIPP3R video clipping software.
+
 # 🎬 ai-clips-maker  
 > **Created by Alperen Sümeroğlu** — An AI-assisted video library for turning long-form content into short clips.
 
