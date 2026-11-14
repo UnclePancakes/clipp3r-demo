@@ -73,7 +73,36 @@ for clip in clips:
     print(clip.begin_sec, clip.finish_sec)
 ```
 
-Launch the CLIPP3R local web studio with:
+### Run CLIPP3R on Windows without an editor
+
+1. Install Python 3.10 or newer and FFmpeg. Make sure `py` and `ffmpeg` work
+   from Command Prompt. Install Git if you plan to clone instead of downloading
+   the repository ZIP.
+2. Download the repository from
+   [GitHub](https://github.com/UnclePancakes/clipp3r-demo) using **Code →
+   Download ZIP**, or clone it with Git:
+
+   ```powershell
+   git clone https://github.com/UnclePancakes/clipp3r-demo.git
+   ```
+
+3. Extract the ZIP if you downloaded it, open the extracted `clipp3r-demo`
+   folder in File Explorer, and double-click `Setup-CLIPP3R.bat`. Setup creates
+   a private `.venv`, installs the app and dependencies, and adds a
+   **CLIPP3R - Local** shortcut to your Desktop. Initial installation can take
+   time and requires an internet connection.
+4. Afterwards, double-click **CLIPP3R - Local** whenever you want to use the
+   app. It opens your browser when the local server is ready. Keep the
+   accompanying console window open while working; press Ctrl+C in it to stop
+   CLIPP3R. The app binds to `127.0.0.1`, so it is only available on your
+   computer. If the default port is busy, the launcher tries nearby ports.
+
+The first transcription may download speech-recognition models. That download
+can be large and needs an internet connection; later runs reuse the cached
+models. Final exports go to your `Desktop\YouTube\CLIPS` folder by default.
+You do not need Visual Studio Code after setup.
+
+### Run from a terminal (optional)
 
 ```bash
 python -m ai_clips_maker.webapp
