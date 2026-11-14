@@ -1,12 +1,24 @@
 $ErrorActionPreference = "Stop"
 $root = $PSScriptRoot
 $python = Join-Path $root ".venv\Scripts\python.exe"
+$pythonPrefix = @()
 
 if (-not (Test-Path -LiteralPath $python)) {
-    throw "CLIPP3R is not set up yet. Run Setup-CLIPP3R.bat first."
+    $launcher = Get-Command py.exe -ErrorAction SilentlyContinue
+    if (-not $launcher) {
+        throw "Python was not found. Run Setup-CLIPP3R.bat after installing Python."
+    }
+    $python = $launcher.Source
+    $pythonPrefix = @("-3")
 }
 if (-not (Get-Command ffmpeg.exe -ErrorAction SilentlyContinue)) {
     throw "FFmpeg is missing from PATH. Install FFmpeg, then run Setup-CLIPP3R.bat again."
+}
+
+$checkArguments = $pythonPrefix + @("-c", "import flask, ai_clips_maker.webapp")
+& $python @checkArguments
+if ($LASTEXITCODE -ne 0) {
+    throw "CLIPP3R dependencies are missing. Run Setup-CLIPP3R.bat to install them."
 }
 
 $port = $null
@@ -53,7 +65,8 @@ Write-Host "Your clips and source files stay on this computer."
 Write-Host "Keep this window open while CLIPP3R is running. Press Ctrl+C here to stop it."
 Push-Location $root
 try {
-    & $python -u -m ai_clips_maker.webapp
+    $serverArguments = $pythonPrefix + @("-u", "-m", "ai_clips_maker.webapp")
+    & $python @serverArguments
     if ($LASTEXITCODE -ne 0) {
         throw "The CLIPP3R server exited with code $LASTEXITCODE."
     }
